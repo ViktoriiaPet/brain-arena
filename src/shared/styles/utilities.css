@@ -1,0 +1,46 @@
+/* ======================================================
+   Utilities
+====================================================== */
+
+@utility container {
+  width: min(100% - 2rem, 1280px);
+  margin-inline: auto;
+}
+
+@utility surface {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+@utility glass {
+  background: rgb(255 255 255 / 3%);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 6%);
+}
+
+@utility card-hover {
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+@utility card-hover-hover {
+  transform: translateY(-2px);
+  /* Fallback for browsers that don't support color-mix (e.g., Chrome < 111) */
+  border-color: var(--border);
+  @supports (border-color: color-mix(in srgb, var(--primary) 35%, var(--border))) {
+    border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  }
+  box-shadow: 0 10px 30px rgb(0 0 0 / 20%);
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
