@@ -1,0 +1,30 @@
+/* ======================================================
+   Layout
+====================================================== */
+
+.page {
+  min-height: 100vh;
+}
+
+.page-offset {
+  padding-top: var(--header-height);
+}
+
+.section {
+  padding-block: var(--section-padding-y);
+}
+
+.container {
+  width: min(calc(100% - (var(--page-padding-x) * 2)), var(--content-max-width));
+  margin-inline: auto;
+}
+
+.container-sm {
+  width: min(calc(100% - (var(--page-padding-x) * 2)), var(--content-max-width-sm));
+  margin-inline: auto;
+}
+
+.container-fluid {
+  width: min(calc(100% - (var(--page-padding-x) * 2)), 100%);
+  margin-inline: auto;
+}

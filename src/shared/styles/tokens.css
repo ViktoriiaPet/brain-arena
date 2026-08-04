@@ -1,0 +1,149 @@
+/* ======================================================
+   Design Tokens
+====================================================== */
+
+:root {
+  /* Typography */
+
+  --font-size: clamp(15px, 0.35vw + 14px, 16px);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  /* Radius */
+
+  --radius: 0.625rem;
+
+  /* Colors */
+
+  --background: #0b0d12;
+  --foreground: #f0f2f8;
+
+  --card: #13161e;
+  --card-foreground: #f0f2f8;
+
+  --popover: #13161e;
+  --popover-foreground: #f0f2f8;
+
+  --primary: #6c6fff;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1c1f2a;
+  --secondary-foreground: #a8aebf;
+
+  --muted: #1a1d27;
+  --muted-foreground: #6b7280;
+
+  --accent: #6c6fff;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: rgb(255 255 255 / 7%);
+  --input: rgb(255 255 255 / 5%);
+  --input-background: rgb(255 255 255 / 5%);
+  --switch-background: #2d3148;
+
+  --ring: #6c6fff;
+
+  /* Charts */
+
+  --chart-1: #6c6fff;
+  --chart-2: #22d3ee;
+  --chart-3: #a78bfa;
+  --chart-4: #34d399;
+  --chart-5: #fb923c;
+
+  /* Sidebar */
+
+  --sidebar: #13161e;
+  --sidebar-foreground: #f0f2f8;
+
+  --sidebar-primary: #6c6fff;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #1c1f2a;
+  --sidebar-accent-foreground: #f0f2f8;
+
+  --sidebar-border: rgb(255 255 255 / 7%);
+  --sidebar-ring: #6c6fff;
+
+  /* Layout */
+  --header-height: 72px;
+  --content-max-width: 1280px;
+  --content-max-width-sm: 960px;
+  --section-padding-y: 6rem;
+  --page-padding-x: clamp(1rem, 3vw, 2rem);
+  --card-padding: 1.5rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgb(0 0 0 / 12%);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 18%);
+  --shadow-lg: 0 16px 40px rgb(0 0 0 / 24%);
+
+  /* Animations */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+|--------------------------------------------------------------------------
+| The design currently only exists in dark mode.
+| Therefore, the .dark class variables mirror :root.
+| Light theme support will be added at a later stage.
+|--------------------------------------------------------------------------
+*/
+
+.dark {
+  --background: #0b0d12;
+  --foreground: #f0f2f8;
+
+  --card: #13161e;
+  --card-foreground: #f0f2f8;
+
+  --popover: #13161e;
+  --popover-foreground: #f0f2f8;
+
+  --primary: #6c6fff;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1c1f2a;
+  --secondary-foreground: #a8aebf;
+
+  --muted: #1a1d27;
+  --muted-foreground: #6b7280;
+
+  --accent: #6c6fff;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: rgb(255 255 255 / 7%);
+  --input: rgb(255 255 255 / 5%);
+  --input-background: rgb(255 255 255 / 5%);
+  --switch-background: #2d3148;
+
+  --ring: #6c6fff;
+
+  --chart-1: #6c6fff;
+  --chart-2: #22d3ee;
+  --chart-3: #a78bfa;
+  --chart-4: #34d399;
+  --chart-5: #fb923c;
+
+  --sidebar: #13161e;
+  --sidebar-foreground: #f0f2f8;
+
+  --sidebar-primary: #6c6fff;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #1c1f2a;
+  --sidebar-accent-foreground: #f0f2f8;
+
+  --sidebar-border: rgb(255 255 255 / 7%);
+  --sidebar-ring: #6c6fff;
+}
