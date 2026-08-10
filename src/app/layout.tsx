@@ -1,6 +1,10 @@
-import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
 import './globals.css'
+
+import Header from '@/widgets/header/ui/Header'
+
+import type { Metadata } from 'next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <Header />
+        <main className="relative overflow-hidden pt-32 pb-12 lg:px-16">{children}</main>
+      </body>
     </html>
   )
 }

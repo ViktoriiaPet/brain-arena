@@ -1,3 +1,3 @@
 export default function HomePage() {
-  return <main>Brain Arena</main>
+  return <main>Home Page</main>
 }
