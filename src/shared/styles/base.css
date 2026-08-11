@@ -11,8 +11,16 @@
     @apply font-sans;
     font-size: var(--font-size);
     scroll-behavior: smooth;
+    /* if no support scrollbar-gutter */
+    overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+  }
+
+  @supports (scrollbar-gutter: stable) {
+    html {
+      scrollbar-gutter: stable;
+    }
   }
 
   body {
