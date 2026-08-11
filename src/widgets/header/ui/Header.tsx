@@ -87,7 +87,7 @@ const Header = () => {
           <ul className="flex items-center gap-3">
             <li>
               <button
-                className="hidden size-8 items-center justify-center rounded-lg text-[#6B7280] transition-all duration-200 hover:bg-white/5 hover:text-[#F0F2F8] sm:flex"
+                className="text-muted-foreground hidden size-8 items-center justify-center rounded-lg transition-all duration-200 hover:bg-white/5 hover:text-[#F0F2F8] sm:flex"
                 type="button"
                 aria-label="Settings"
               >
@@ -96,7 +96,7 @@ const Header = () => {
             </li>
             <li>
               <button
-                className="hidden size-8 items-center justify-center rounded-lg text-[#6B7280] transition-all duration-200 hover:bg-white/5 hover:text-[#F0F2F8] sm:flex"
+                className="text-muted-foreground hidden size-8 items-center justify-center rounded-lg transition-all duration-200 hover:bg-white/5 hover:text-[#F0F2F8] sm:flex"
                 type="button"
                 aria-label="Profile"
               >
