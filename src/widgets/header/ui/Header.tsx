@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+const SCROLL_THRESHOLD = 20
+
 const NAV_LINKS = [
   { href: '/games', label: 'Games' },
   { href: '/leaderboards', label: 'Leaderboards' },
@@ -17,7 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > SCROLL_THRESHOLD)
     }
 
     handleScroll()
