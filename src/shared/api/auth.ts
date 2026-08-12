@@ -1,4 +1,4 @@
-import { RegisterRequest, RegisterResponse } from '@/shared/types/auth'
+import { RegisterRequest, RegisterResponse, LoginRequest, LoginResponse } from '@/shared/types/auth'
 import { api } from './axios'
 import axios from 'axios'
 
@@ -12,4 +12,10 @@ export const registerUser = async (data: RegisterRequest): Promise<RegisterRespo
     }
     throw new Error('Registration failed')
   }
+}
+
+export const loginUser = async (data: LoginRequest): Promise<LoginResponse> => {
+  const response = await api.post<LoginResponse>('/auth/login', data)
+
+  return response.data
 }
