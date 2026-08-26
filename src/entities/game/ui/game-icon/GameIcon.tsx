@@ -22,6 +22,8 @@ const GameIcon = ({
     queryFn: async () => {
       const response = await fetch(iconUrl)
 
+      if (!response.ok) throw new Error('Failed to load icon')
+
       return response.text()
     },
   })

@@ -9,7 +9,11 @@ export interface Game {
   status: GameStatus
   category: string
   difficulty: GameDifficulty
-  duration: string
+  parameters: {
+    duration: string
+    today: number
+    avg: number
+  }
   color: string
   iconUrl: string
 }
