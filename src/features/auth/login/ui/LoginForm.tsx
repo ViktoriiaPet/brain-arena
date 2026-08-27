@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { loginUser } from '@/shared/api/auth'
 import { loginSchema, type LoginFormValues } from '../model/schema'
+import { setAccessToken } from '@/shared/lib/auth/token'
 
 export const LoginForm = () => {
   const {
@@ -17,7 +18,7 @@ export const LoginForm = () => {
   const onSubmit = async (data: LoginFormValues) => {
     const result = await loginUser(data)
     console.log('LOGIN RESULT:', result)
-    return result
+    setAccessToken(result.token)
   }
 
   return (
