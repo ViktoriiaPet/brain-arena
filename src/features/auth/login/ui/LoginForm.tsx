@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form'
 import { loginUser } from '@/shared/api/auth'
 import { loginSchema, type LoginFormValues } from '../model/schema'
 import { setAccessToken } from '@/shared/lib/auth/token'
+import { getCurrentUser } from '@/shared/api/profile'
+import { useAuthStore } from '../../model/store'
 
 export const LoginForm = () => {
   const {
@@ -19,7 +21,13 @@ export const LoginForm = () => {
     const result = await loginUser(data)
     console.log('LOGIN RESULT:', result)
     setAccessToken(result.token)
+
+    const user = await getCurrentUser()
+    setUser(user)
+    console.log('AUTH STORE:', useAuthStore.getState())
   }
+
+  const setUser = useAuthStore((state) => state.setUser)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
