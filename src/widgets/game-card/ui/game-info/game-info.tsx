@@ -38,7 +38,7 @@ const GameInfo = ({
           </span>
         </div>
       </div>
-      <p className="line-clamp-2 max-w-61.25 text-[11px] leading-relaxed text-[#6B7280]">
+      <p className="text-muted-foreground line-clamp-2 max-w-61.25 text-[11px] leading-relaxed">
         {description}
       </p>
     </div>
