@@ -1,10 +1,11 @@
 import { Game } from '@/entities/game/model/types'
-import GameIcon from '@/entities/game/ui/game-icon/GameIcon'
-import GameParameters from '@/entities/game/ui/game-parameters/GameParameters'
+import GameParameters from '@/widgets/game-card/ui/game-parameters/game-parameters'
 import { hexToRgba } from '@/shared/lib/color'
 import { Button } from '@/shared/ui/button'
 import { Clock, Play, Star, Users } from 'lucide-react'
 import { CSSProperties } from 'react'
+import GameCardHeader from '@/widgets/game-card/ui/game-header/game-header'
+import GameInfo from '@/widgets/game-card/ui/game-info/game-info'
 
 type GameCardProps = {
   game: Game
@@ -30,59 +31,31 @@ const GameCard = ({ game }: GameCardProps) => {
         } as CSSProperties
       }
     >
-      {/* TOP ACCENT */}
       <div
         className="absolute top-0 right-0 left-0 h-0.5 opacity-0 duration-300 group-hover:opacity-100"
         style={{
           background: `linear-gradient(90deg, transparent, ${game.color}80, ${game.color}, ${game.color}80, transparent)`,
         }}
       />
-      {/* CARD HEAD */}
-      <div className="relative">
-        <div className="absolute flex w-full justify-between p-4">
-          <span>Live</span>
-          <span>❤️</span>
-        </div>
-        {/* CARD HEAD BACKGROUND */}
-        <div className="flex h-36 items-center justify-center">
-          <div
-            className="flex h-full w-full items-center justify-center bg-(--card-head-background-glow) opacity-50 duration-(--duration-fast) group-hover:opacity-90"
-            style={{
-              background: cardHeadBackgroundGlow,
-            }}
-          >
-            <GameIcon iconUrl={game.iconUrl} iconColor={game.color} />
-          </div>
-        </div>
 
-        {/* CARD BODY */}
+      <div className="relative">
+        <GameCardHeader
+          cardHeadBackgroundGlow={cardHeadBackgroundGlow}
+          iconUrl={game.iconUrl}
+          iconColor={game.color}
+        />
+
         <div className="flex flex-col gap-3 p-4">
-          {/* GAME INFO */}
-          <div className="flex h-auto flex-col gap-2.5">
-            <div className="flex gap-2.5">
-              <div
-                className="flex h-8.25 w-8.25 items-center justify-center rounded-4xl"
-                style={{ background: iconBgColor }}
-              >
-                <GameIcon iconUrl={game.iconUrl} iconColor={game.color} iconSize={22} />
-              </div>
-              <div className="flex flex-col items-start gap-2">
-                <h4 className="text-foreground truncate text-sm leading-tight font-bold">
-                  {game.title}
-                </h4>
-                <span
-                  className="truncate rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase"
-                  style={{ color: game.color, background: difficultyBgColor }}
-                >
-                  {game.difficulty}
-                </span>
-              </div>
-            </div>
-            <p className="line-clamp-2 max-w-61.25 text-[11px] leading-relaxed text-[#6B7280]">
-              {game.description}
-            </p>
-          </div>
-          {/* GAME PARAMETERS */}
+          <GameInfo
+            iconBgColor={iconBgColor}
+            iconUrl={game.iconUrl}
+            color={game.color}
+            title={game.title}
+            difficultyBgColor={difficultyBgColor}
+            difficulty={game.difficulty}
+            description={game.description}
+          />
+
           <div className="grid grid-cols-3 gap-1.5 rounded-xl border border-[#ffffff0d] bg-[#181B22] px-2 py-1.5">
             <GameParameters
               icon={<Clock size={8} />}
@@ -97,7 +70,7 @@ const GameCard = ({ game }: GameCardProps) => {
               valueColor={game.color}
             />
           </div>
-          {/* CALL TO ACTION */}
+
           <Button
             variant="outline"
             className="flex h-auto w-full items-center justify-center gap-1.5 rounded-xl border border-(--border-color) bg-[#1B1E26] py-2.5 text-xs font-bold text-(--call-to-action-color) transition-all duration-300 group-hover:bg-(--call-to-action-color)! group-hover:text-[#0B0D12]!"

@@ -1,6 +1,6 @@
 import { games } from '@/entities/game/config/mock-games'
 
-import GameCard from '@/entities/game/ui/GameCard'
+import GameCard from '@/widgets/game-card/ui/game-card'
 
 const Games = () => {
   return (
