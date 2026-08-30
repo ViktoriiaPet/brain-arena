@@ -19,3 +19,7 @@ export const loginUser = async (data: LoginRequest): Promise<LoginResponse> => {
 
   return response.data
 }
+
+export const logoutUser = async (refreshToken: string) => {
+  await api.post('/auth/logout', { refreshToken })
+}
