@@ -1,4 +1,4 @@
-const hexToGlow = (hex: string, opacity = 0.18): string => {
+const hexToRgba = (hex: string, opacity = 0.18): string => {
   if (!/^#?[0-9a-fA-F]{6}$/.test(hex)) return `rgba(0,0,0,${opacity})`
 
   const cleanHex = hex.replace('#', '')
@@ -10,4 +10,4 @@ const hexToGlow = (hex: string, opacity = 0.18): string => {
   return `rgba(${r},${g},${b},${opacity})`
 }
 
-export default hexToGlow
+export default hexToRgba
