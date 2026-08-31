@@ -2,6 +2,8 @@ import { Inter } from 'next/font/google'
 
 import './globals.css'
 
+import { QueryProvider } from '@/app/providers'
+
 import Header from '@/widgets/header/ui/Header'
 
 import type { Metadata } from 'next'
@@ -25,8 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <Header />
-        <main className="relative overflow-hidden pt-32 pb-12 lg:px-16">{children}</main>
+        <QueryProvider>
+          <Header />
+          <main className="relative overflow-hidden pt-32 pb-12 lg:px-16">{children}</main>
+        </QueryProvider>
       </body>
     </html>
   )
