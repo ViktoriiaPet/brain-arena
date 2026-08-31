@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form'
 import { registerSchema } from '../model/schema'
 import type { RegisterFormValues } from '../model/schema'
 import { registerUser } from '@/shared/api/auth'
+import { useState } from 'react'
+import axios from 'axios'
 
 export const RegisterForm = () => {
   const {
@@ -15,10 +17,16 @@ export const RegisterForm = () => {
     resolver: zodResolver(registerSchema),
   })
 
+  const [serverError, setServerError] = useState<string | null>(null)
   const onSubmit = async (data: RegisterFormValues) => {
-    const result = await registerUser(data)
-
-    console.log(result)
+    setServerError(null)
+    try {
+      const result = await registerUser(data)
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 409) {
+        setServerError('User with this email already exists')
+      }
+    }
   }
 
   return (
@@ -34,7 +42,7 @@ export const RegisterForm = () => {
       <label htmlFor="password">Password</label>
       <input type="password" id="password" {...register('password')} />
       {errors.password && <p>{errors.password.message}</p>}
-
+      {serverError && <p>{serverError}</p>}
       <button type="submit">Register</button>
     </form>
   )

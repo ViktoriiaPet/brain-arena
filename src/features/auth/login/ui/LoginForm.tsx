@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { loginUser } from '@/shared/api/auth'
@@ -14,6 +15,7 @@ import {
 import { getCurrentUser } from '@/shared/api/profile'
 import { useAuthStore } from '../../model/store'
 import { logoutUser } from '@/shared/api/auth'
+import axios from 'axios'
 
 export const LoginForm = () => {
   const {
@@ -24,15 +26,23 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   })
 
-  const onSubmit = async (data: LoginFormValues) => {
-    const result = await loginUser(data)
-    console.log('LOGIN RESULT:', result)
-    setAccessToken(result.token)
-    setRefreshToken(result.refreshToken)
+  const [serverError, setServerError] = useState<string | null>(null)
 
-    const user = await getCurrentUser()
-    setUser(user)
-    console.log('AUTH STORE:', useAuthStore.getState())
+  const onSubmit = async (data: LoginFormValues) => {
+    setServerError(null)
+    try {
+      const result = await loginUser(data)
+
+      setAccessToken(result.token)
+      setRefreshToken(result.refreshToken)
+
+      const user = await getCurrentUser()
+      setUser(user)
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        setServerError('Invalid email or password')
+      }
+    }
   }
 
   const handleLogout = async () => {
@@ -57,7 +67,7 @@ export const LoginForm = () => {
       <label htmlFor="password">Password</label>
       <input type="text" id="password" {...register('password')} />
       {errors.password && <p>{errors.password.message}</p>}
-
+      {serverError && <p>{serverError}</p>}
       <button type="submit">Login</button>
 
       <button type="button" onClick={handleLogout}>
